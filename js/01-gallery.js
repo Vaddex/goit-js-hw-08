@@ -2,21 +2,27 @@ import { galleryItems } from './gallery-items.js';
 // Change code below this line
 const galleryUl = document.querySelector(".gallery");
 
-const galleryMaker = galleryItems
-  .map(({ preview, original, description }) => {
-    return `
-    <li class="gallery__item">
+function galleryMaker(arr) {
+  return arr
+    .map(({ preview, original, description }) => {
+      `
+      <li class="gallery__item">
         <a class="gallery__link" href="${original}">
-            <img src="${preview}" 
-            alt="${description}"
+          <img
             class="gallery__image"
-            data-source="large-image.jpg">
+            src="${preview}"
+            data-source="${original}"
+            alt="${description}"
+          />
         </a>
-    </li>`;
-  })
-  .join("");
+      </li>
+      `;
+    })
+    .join("");
+}
 
-galleryUl.insertAdjacentHTML("afterbegin", galleryMaker);
+galleryUl.insertAdjacentHTML("afterbegin", galleryMaker(galleryItems));
+
 galleryUl.addEventListener("click", handlerClick);
 
 function handlerClick(event) {
@@ -24,12 +30,14 @@ function handlerClick(event) {
   const target = event.target;
   if (target.classList.contains(".gallery__image")) {
     const mainImg = target.dataset.sourse;
-    modal = basicLigthbox.create(
-      `<img scr='${mainImg}' width='800' height='600'>`
+    const modal = basicLigthbox.create(
+      `<img scr='${mainImg}' 
+        width='800' 
+        height='600'>`
     );
     modal.show();
-    modalsOpen = true;
   }
 }
-    
 console.log(galleryItems);
+
+console.log(basicLigthbox);
