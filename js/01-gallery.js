@@ -1,11 +1,10 @@
-import { galleryItems } from './gallery-items.js';
-// Change code below this line
+import { galleryItems } from "./gallery-items.js";
 const galleryUl = document.querySelector(".gallery");
 
-function galleryMaker(arr) {
-  return arr
-    .map(({ preview, original, description }) => {
-      `
+// create gallery
+const galleryMaker = galleryItems
+  .map(({ preview, original, description }) => {
+    return `
       <li class="gallery__item">
         <a class="gallery__link" href="${original}">
           <img
@@ -17,27 +16,24 @@ function galleryMaker(arr) {
         </a>
       </li>
       `;
-    })
-    .join("");
-}
+  })
+  .join("");
 
-galleryUl.insertAdjacentHTML("afterbegin", galleryMaker(galleryItems));
+galleryUl.insertAdjacentHTML("afterbegin", galleryMaker);
 
 galleryUl.addEventListener("click", handlerClick);
 
 function handlerClick(event) {
   event.preventDefault();
   const target = event.target;
-  if (target.classList.contains(".gallery__image")) {
-    const mainImg = target.dataset.sourse;
-    const modal = basicLigthbox.create(
-      `<img scr='${mainImg}' 
-        width='800' 
-        height='600'>`
-    );
+  if (target.classList.contains("gallery__image")) {
+    const mainImg = target.dataset.source;
+    const modal = basicLightbox.create(`
+        <img src="${mainImg}"
+          width="800"
+          height="600">
+      `);
     modal.show();
   }
 }
 console.log(galleryItems);
-
-console.log(basicLigthbox);
