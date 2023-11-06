@@ -21,7 +21,9 @@ const interactiveGallery = new SimpleLightbox(".gallery a", {
   captionsData: "alt",
   captionDelay: 250,
   fadeSpeed: 250,
-  close: false,
+
   captionPosition: "bottom",
   enableKeyboard: true,
+  close: true,
+  closeText: "x",
 });
