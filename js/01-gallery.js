@@ -36,4 +36,3 @@ function handlerClick(event) {
     modal.show();
   }
 }
-console.log(galleryItems);

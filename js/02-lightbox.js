@@ -25,5 +25,3 @@ const interactiveGallery = new SimpleLightbox(".gallery a", {
   captionPosition: "bottom",
   enableKeyboard: true,
 });
-
-console.log(galleryItems);
